@@ -126,10 +126,10 @@ This is a Free API for Cricket Fans around the Globe
 * Get Player Rankings
 * Get Team Rankings
 ### Coming Soon
-- [ ] Getting Fixtures
-- [ ] Getting Live Matches
-- [ ] Getting Results
-- [ ] Getting Live Match Updates
+- [X] Getting Fixtures
+- [X] Getting Live Matches
+- [X] Getting Results
+- [X] Getting Live Match Updates
 - [ ] Stats
 ## Using API
 ### Get Team Overview
@@ -141,7 +141,7 @@ Get Overview about a Team including its:
 #### Required Parameters
 * name : str -> [Abbreviation of Team Name](#team-abbreviations)
 
-### API Endpoint
+#### API Endpoint
 ```
 https://factory-apis.herokuapp.com/api/cricket/team?name=PAK
 ```
@@ -195,7 +195,7 @@ Get All-Times Best Player in the history of Cricket
 * pageSize : int (max is 100) -> total number of result in a page
 
 
-### API Endpoint
+#### API Endpoint
 ```
 https://factory-apis.herokuapp.com/api/cricket/beasts?role=bat&format=odi
 ```
@@ -222,7 +222,7 @@ Get All the Tournaments recognized by International Cricket Council (ICC)
 * pageSize : int (max is 100) -> total number of result in a page
 * startDate : date (yyyy-mm-dd) -> startDate from which you want to get the Tournaments
 
-### API Endpoint
+#### API Endpoint
 ```
 https://factory-apis.herokuapp.com/api/cricket/tournament
 ```
@@ -253,7 +253,7 @@ Get Current Players Ranking
 * pageSize : int (max is 100) -> total number of result in a page
 * at : date (yyyy-mm-dd) -> ranking at the specific date
 
-### API Endpoint
+#### API Endpoint
 ```
 https://factory-apis.herokuapp.com/api/cricket/player_ranking?role=bat&format=odi
 ```
@@ -311,7 +311,7 @@ Get Current Teams Ranking
 #### Required Parameters
 * format : str -> [Format of Match](#match-formats)
 
-### API Endpoint
+#### API Endpoint
 ```
 https://factory-apis.herokuapp.com/api/cricket/team_ranking?format=test
 ```
@@ -342,3 +342,119 @@ https://factory-apis.herokuapp.com/api/cricket/team_ranking?format=test
   {}
 ]
 ```
+
+### Get Fixtures
+#### Description:
+Get All Upcoming Matches Detail
+
+#### Optional Parameters
+* page : int -> number of page being queried
+* pageSize : int (max is 100) -> total number of result in a page
+* startDate : date (yyyy-mm-dd) -> startDate of the fixtures
+* endDate : date (yyyy-mm-dd) -> endDate of the fixtures
+* name : str -> [Abbreviation of Team Name](#team-abbreviations)
+
+#### API Endpoint
+```
+https://factory-apis.herokuapp.com/api/cricket/fixtures
+```
+> **_NOTE:_** Please use proper Start Date and End Date for more accurate fixtures
+### Output 
+* Type -> JSON
+* Structure
+```json
+{
+  "content": [
+    {},
+    {}
+  ],
+  "pageInfo": {}
+}
+```
+
+### Get Results
+#### Description:
+Get All the Results
+
+#### Optional Parameters
+* page : int -> number of page being queried
+* pageSize : int (max is 100) -> total number of result in a page
+* endDate : date (yyyy-mm-dd) -> endDate of the match
+* name : str -> [Abbreviation of Team Name](#team-abbreviations)
+
+#### API Endpoint
+```
+https://factory-apis.herokuapp.com/api/cricket/results
+```
+> **_NOTE:_** Please use proper Start Date for more accurate results
+### Output 
+* Type -> JSON
+* Structure
+```json
+{
+  "content": [
+    {},
+    {}
+  ],
+  "pageInfo": {}
+}
+```
+
+### Get Lives
+#### Description:
+Get All the Live Matches
+
+#### Optional Parameters
+* page : int -> number of page being queried
+* pageSize : int (max is 100) -> total number of result in a page
+* startDate : date (yyyy-mm-dd) -> startDate of the match
+* endDate : date (yyyy-mm-dd) -> endDate of the match
+
+#### API Endpoint
+```
+https://factory-apis.herokuapp.com/api/cricket/live
+```
+> **_NOTE:_** Please use proper Start Date and End Date for more accurate results
+### Output 
+* Type -> JSON
+* Structure
+```json
+{
+  "content": [
+    {},
+    {}
+  ],
+  "pageInfo": {}
+}
+```
+
+### Get Live Updates
+#### Description:
+Get Live Update for a specific already started match
+
+#### Required Parameters
+* matchId : int -> ID of the match which is live right now.
+* commentary : boolean -> Get live commentary too 
+
+#### API Endpoint
+```
+https://factory-apis.herokuapp.com/api/cricket/live_update?matchId=4262&commentary=false
+```
+### Output 
+* Type -> JSON
+* Structure
+```json
+{
+  "currentState": {},
+  "innings": [],
+  "matchId": {},
+  "matchInfo": {}
+}
+```
+
+# Updates
+## Update 0.2:
+* [Get all Fixtures](#get-fixtures)
+* [Get all Results](#get-results)
+* [Get all Live Matches](#get-lives)
+* [Get all Live Matches Update](#get-live-updates)
